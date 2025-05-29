@@ -48,9 +48,9 @@ GROUP BY observer ORDER BY registers DESC;
 -- MISSION 7
 -- Your query here;
 
-SELECT scientific_name, common_name FROM species 
+SELECT scientific_name, common_name, count FROM species 
 LEFT JOIN observations ON species.id = observations.species_id 
-WHERE count IS NULL OR count = 0
+WHERE count IS NULL OR count = 0 GROUP BY species.id;
 
 
 -- MISSION 8
