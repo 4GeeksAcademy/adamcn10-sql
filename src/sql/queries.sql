@@ -12,7 +12,7 @@ SELECT * FROM observations;
 -- Your query here;
 SELECT name, country FROM regions 
 INNER JOIN observations ON regions.id = observations.region_id 
-WHERE count > 0 GROUP BY region_id ORDER BY COUNT(*) DESC;
+WHERE count > 0 GROUP BY region_id ORDER BY COUNT(DISTINCT species_id) DESC;
 
 -- MISSION 2
 -- Your query here;
@@ -50,7 +50,7 @@ GROUP BY observer ORDER BY registers DESC;
 
 SELECT scientific_name, common_name, count FROM species 
 LEFT JOIN observations ON species.id = observations.species_id 
-WHERE count IS NULL OR count = 0 GROUP BY species.id;
+WHERE count IS NULL GROUP BY species.id;
 
 
 -- MISSION 8
@@ -58,4 +58,4 @@ WHERE count IS NULL OR count = 0 GROUP BY species.id;
 
 SELECT observation_date FROM observations
 WHERE count > 0 GROUP BY observation_date 
-ORDER BY COUNT(*) DESC;
+ORDER BY COUNT(DISTINCT species_id) DESC;
